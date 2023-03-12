@@ -1,6 +1,6 @@
 # build
 
-Build a github project using github actions in simple steps
+Build a project using github actions in simple steps
 
 ## Usage
 
