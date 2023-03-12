@@ -42,9 +42,11 @@ deno run  https://github.com/sigmaSd/build/raw/master/main.ts https://github.com
 
 2- HelixBuild folder is created, you have to create a throwayway github repo and
 add it as a remote, for example,
+
 ```
 cd HelixBuild && git remote add origin git@github.com:username/mythrowawayrepo.git
-``` 
+```
+
 (assumes the repo is already created)
 
 3- git push
