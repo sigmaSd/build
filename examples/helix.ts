@@ -11,8 +11,11 @@ if (import.meta.main) {
   const { $ } = await import("https://deno.land/x/dax@0.28.0/mod.ts");
   await $`git clone https://github.com/helix-editor/helix`;
   await $`cd helix && cargo build --release`;
-  await $`cp helix/target/release/hx helix-bin`;
   await $`rm -rf helix/runtime/grammars/sources`;
+
+  await $`mkdir hx`;
+  await $`cp helix/target/release/hx hx/helix-bin`;
+  await $`cp -r helix/runtime hx/runtime`;
 
   const bashWrapper = `\
 #!/bin/bash
@@ -21,6 +24,7 @@ runtime="$dir/runtime"
 helix="$dir/helix-bin"
 HELIX_RUNTIME=$runtime $helix
 `;
-  Deno.writeTextFileSync("hx", bashWrapper);
-  await $`tar -cvf helix.tar hx helix-bin helix/runtime`;
+  Deno.writeTextFileSync("hx/hx", bashWrapper);
+
+  await $`tar -cvf helix.tar hx`;
 }
