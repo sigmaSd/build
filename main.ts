@@ -6,7 +6,8 @@ import { createAction, Recipe } from "./lib.ts";
 if (import.meta.main) {
   const userBuild = Deno.args[0];
   if (!userBuild) throw "No user build specified";
-  const recipe: Recipe = await import(makeUrl(userBuild).href)
+  const userBuildUrl = makeUrl(userBuild);
+  const recipe: Recipe = await import(userBuildUrl.href)
     .then((m) => m.default);
 
   const dir = `${recipe.name}Build`;
@@ -17,7 +18,9 @@ if (import.meta.main) {
     dir + "/.github/workflows/recipe.yml",
     await createAction(recipe),
   );
-  Deno.copyFileSync(userBuild, dir + "/userBuild.ts");
+  await fetch(userBuildUrl).then((r) =>
+    r.body?.pipeTo(Deno.createSync(dir + "/userBuild.ts").writable)
+  );
 
   await gitAddAndCommit(dir, recipe);
 }
