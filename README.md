@@ -27,7 +27,7 @@ if (import.meta.main) {
 
 - `deno run main.ts $scriptPath`
 - now you have a new directory called `scriptnameBuild` that have the github
-  action workflow. You just need to push it so it can build.
+  action workflow. You just need to push it to a github repo so it can build.
 
 ## Test Drive
 
@@ -41,19 +41,13 @@ deno run  https://github.com/sigmaSd/build/raw/master/main.ts https://github.com
 ```
 
 2- HelixBuild folder is created, you have to create a throwayway github repo and
-add it as a remote, for example,
+push to it, for example
 
 ```
-cd HelixBuild && git remote add origin git@github.com:username/mythrowawayrepo.git
+cd HelixBuild && git remote add origin git@github.com:username/mythrowawayrepo.git && git init && git add . && git commit -m "helix" && git push
 ```
 
 (assumes the repo is already created)
 
-3- git push
-
-```
-git push
-```
-
-4- now the codeaction will run and build the project, you should find the result
+3- now the codeaction will run and build the project, you should find the result
 under `https://github.com/username/mythrowawayrepo/releases`
