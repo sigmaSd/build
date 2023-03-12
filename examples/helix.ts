@@ -1,13 +1,5 @@
 import { $ } from "https://deno.land/x/dax@0.28.0/mod.ts";
-
-//FIXME: replace with import, when lib.rs is published
-// import { Recipe } from "./lib.ts";
-export interface Recipe {
-  name: string;
-  target: string;
-  projectType: ProjectType[];
-}
-type ProjectType = "cargo";
+import { Recipe } from "https://raw.githubusercontent.com/sigmaSd/build/master/lib.ts";
 
 const recipe: Recipe = {
   name: "Helix",
