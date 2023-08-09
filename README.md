@@ -26,7 +26,7 @@ if (import.meta.main) {
 ```
 
 - `deno run --reload https://github.com/sigmaSd/build/raw/master/main.ts $scriptPath`
-- now you have a new directory called `scriptnameBuild` that have the github
+- now you have a new directory called `${recipename}Build` that have the github
   action workflow. You just need to push it to a github repo so it can build.
 
 ## Test Drive
