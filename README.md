@@ -44,7 +44,7 @@ deno run  https://github.com/sigmaSd/build/raw/master/main.ts https://github.com
 push to it, for example
 
 ```
-cd HelixBuild && git remote add origin git@github.com:username/mythrowawayrepo.git && git init && git add . && git commit -m "helix" && git push
+cd HelixBuild && git remote add origin git@github.com:username/mythrowawayrepo.git && && git push -f --set-upstream origin master
 ```
 
 (assumes the repo is already created)
