@@ -29,6 +29,20 @@ if (import.meta.main) {
 - now you have a new directory called `${recipename}Build` that have the github
   action workflow. You just need to push it to a github repo so it can build.
 
+Here is the script for example that I'm using to build helix from source,
+note BuildMachine repo is just a throw-away repo that I'm using to build and get the artifacts
+```ts
+import { $ } from "https://deno.land/x/dax@0.34.0/mod.ts";
+$.setPrintCommand(true);
+
+await $`rm -rf HelixBuild`.noThrow();
+await $`deno run -A https://github.com/sigmaSd/build/raw/master/main.ts helix.ts`;
+$.cd("HelixBuild");
+
+await $`git remote add origin git@github.com:sigmaSd/buildMachine.git`;
+await $`git push -f --set-upstream origin master`;
+```
+
 ## Test Drive
 
 build helix project https://github.com/helix-editor/helix
