@@ -27,7 +27,7 @@ if (import.meta.main) {
 
 - `deno run --reload https://github.com/sigmaSd/build/raw/master/main.ts $scriptPath`
 - now you have a new directory called `${recipename}Build` that have the github
-  action workflow. You just need to push it to a github repo so it can build.
+  action workflow. You just need to push it to a github repo so it can build. You can then manually retirgger the action from the github ui.
 
 Here is the script for example that I'm using to build helix from source,
 note BuildMachine repo is just a throw-away repo that I'm using to build and get the artifacts
