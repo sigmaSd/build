@@ -1,4 +1,4 @@
-import { Recipe } from "https://raw.githubusercontent.com/sigmaSd/build/master/lib.ts";
+import type { Recipe } from "https://raw.githubusercontent.com/sigmaSd/build/master/lib.ts";
 
 const recipe: Recipe = {
   name: "Helix",
@@ -8,7 +8,7 @@ const recipe: Recipe = {
 export default recipe;
 
 if (import.meta.main) {
-  const { $ } = await import("https://deno.land/x/dax@0.28.0/mod.ts");
+  const { $ } = await import("jsr:@david/dax@0.39.2");
   await $`git clone https://github.com/helix-editor/helix`;
   await $`cd helix && cargo build --release`;
   await $`rm -rf helix/runtime/grammars/sources`;

@@ -7,8 +7,8 @@ Build a project using github actions in simple steps
 - create a deno script that builds the project
 
 ```ts
-import { $ } from "https://deno.land/x/dax@0.28.0/mod.ts";
-import { Recipe } from "https://raw.githubusercontent.com/sigmaSd/build/master/lib.ts";
+import { $ } from "jsr:@david/dax@0.39.2";
+import type { Recipe } from "https://raw.githubusercontent.com/sigmaSd/build/master/lib.ts";
 
 const recipe: Recipe = {
   name: "Helix",
@@ -27,10 +27,13 @@ if (import.meta.main) {
 
 - `deno run --reload https://github.com/sigmaSd/build/raw/master/main.ts $scriptPath`
 - now you have a new directory called `${recipename}Build` that have the github
-  action workflow. You just need to push it to a github repo so it can build. You can then manually retirgger the action from the github ui.
+  action workflow. You just need to push it to a github repo so it can build.
+  You can then manually retirgger the action from the github ui.
 
-Here is the script for example that I'm using to build helix from source,
-note BuildMachine repo is just a throw-away repo that I'm using to build and get the artifacts
+Here is the script for example that I'm using to build helix from source, note
+BuildMachine repo is just a throw-away repo that I'm using to build and get the
+artifacts
+
 ```ts
 import { $ } from "https://deno.land/x/dax@0.34.0/mod.ts";
 $.setPrintCommand(true);
