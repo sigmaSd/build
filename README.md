@@ -35,13 +35,14 @@ BuildMachine repo is just a throw-away repo that I'm using to build and get the
 artifacts
 
 ```ts
-import { $ } from "https://deno.land/x/dax@0.34.0/mod.ts";
+import { $ } from "jsr:@david/dax@0.39.2";
 $.setPrintCommand(true);
 
 await $`rm -rf HelixBuild`.noThrow();
 await $`deno run -A https://github.com/sigmaSd/build/raw/master/main.ts helix.ts`;
 $.cd("HelixBuild");
 
+await $`git init && git commit -m "helix build"`;
 await $`git remote add origin git@github.com:sigmaSd/buildMachine.git`;
 await $`git push -f --set-upstream origin master`;
 ```
